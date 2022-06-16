@@ -1,0 +1,101 @@
+{
+    "name": "vladimirmartsul/symfony-exchange-demo",
+    "description": "Symfony currency exchange demo",
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.1",
+        "ext-bcmath": "*",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "ext-intl": "*",
+        "ext-pdo_sqlite": "*",
+        "ext-simplexml": "*",
+        "ext-sqlite3": "*",
+        "doctrine/annotations": "^1.13",
+        "doctrine/doctrine-bundle": "^2.7",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.12",
+        "litipk/php-bignumbers": "^0.8.6",
+        "symfony/console": "6.1.*",
+        "symfony/dotenv": "6.1.*",
+        "symfony/flex": "^2.2",
+        "symfony/framework-bundle": "6.1.*",
+        "symfony/http-client": "6.1.*",
+        "symfony/intl": "6.1.*",
+        "symfony/maker-bundle": "^1.43",
+        "symfony/proxy-manager-bridge": "6.1.*",
+        "symfony/requirements-checker": "^2.0",
+        "symfony/runtime": "6.1.*",
+        "symfony/validator": "6.1.*",
+        "symfony/yaml": "6.1.*"
+    },
+    "require-dev": {
+        "dama/doctrine-test-bundle": "^7.1",
+        "phpunit/phpunit": "^9.5",
+        "symfony/phpunit-bridge": "6.1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "discard-changes": true,
+        "htaccess-protect": false,
+        "notify-on-install": false,
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "platform-check": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "preferred-install": {
+            "*": "dist"
+        }
+    },
+    "replace": {
+        "laminas-code/polyfill": "*",
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-intl-grapheme": "*",
+        "symfony/polyfill-intl-normalizer": "*",
+        "symfony/polyfill-mbstring": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "requirements-checker": "script",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ]
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true,
+            "require": "6.1.*"
+        }
+    }
+}

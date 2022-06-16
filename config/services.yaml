@@ -1,0 +1,36 @@
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Providers\CoinDeskRatesProvider:
+        arguments:
+            $url: '%env(COINDESK_URL)%'
+            $base: '%env(COINDESK_BASE)%'
+        tags: [ 'app.rates_provider' ]
+
+    App\Providers\EcbRatesProvider:
+        arguments:
+            $url: '%env(ECB_URL)%'
+            $base: '%env(ECB_BASE)%'
+        tags: [ 'app.rates_provider' ]
+
+    App\Services\RatesUpdater:
+        arguments:
+            - !tagged_iterator app.rates_provider
+
+    App\Command\CurrencyUpdateCommand:
+        tags:
+            - { name: 'console.command', command: 'currency:update' }
+
+    App\Command\CurrencyExchangeCommand:
+        tags:
+            - { name: 'console.command', command: 'currency:exchange' }
+            - { name: 'console.command', command: 'exchange:currency' }

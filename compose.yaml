@@ -1,0 +1,5 @@
+services:
+  symfony-rates-demo:
+    build: docker
+    volumes:
+      - .:/app
