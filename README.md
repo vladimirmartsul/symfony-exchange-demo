@@ -94,7 +94,7 @@ Docker Desktop (Windows, MacOS) or docker-cli and docker-compose (Linux)
 ```bash
 git clone https://vladimirmartsul@bitbucket.org/vladimirmartsul/symfony-exchange-demo.git
 cd symfony-exchange-demo
-docker compose build
+docker compose up --build
 ```
 
 Currency rates will be updated during build.
