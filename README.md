@@ -76,7 +76,7 @@ should output
 
 ```bash
 cd symfony-exchange-demo
-echo "APP_ENV=test" > .env.local
+echo APP_ENV=test > .env.local
 composer install --no-interaction
 php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate --no-interaction
@@ -121,7 +121,7 @@ should output
 
 ```bash
 cd symfony-exchange-demo
-echo "APP_ENV=test" > .env.local
+echo APP_ENV=test > .env.local
 docker compose run symfony-exchange-demo composer install --no-interaction
 docker compose run symfony-exchange-demo doctrine:database:create
 docker compose run symfony-exchange-demo doctrine:migrations:migrate --no-interaction
