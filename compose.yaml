@@ -1,5 +1,5 @@
 services:
-  symfony-rates-demo:
+  symfony-exchange-demo:
     build: docker
     volumes:
       - .:/app
