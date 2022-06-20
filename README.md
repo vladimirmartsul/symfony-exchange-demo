@@ -80,7 +80,7 @@ echo APP_ENV=test > .env.local
 composer install --no-interaction
 php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate --no-interaction
-vendor/bin/phpunit
+php bin/phpunit
 ```
 
 ## 2. Docker-way
@@ -125,7 +125,7 @@ echo APP_ENV=test > .env.local
 docker compose run symfony-exchange-demo composer install --no-interaction
 docker compose run symfony-exchange-demo doctrine:database:create
 docker compose run symfony-exchange-demo doctrine:migrations:migrate --no-interaction
-docker compose run symfony-exchange-demo vendor/bin/phpunit
+docker compose run symfony-exchange-demo bin/phpunit
 ```
 
 ## Extending
