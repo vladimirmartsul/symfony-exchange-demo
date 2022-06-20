@@ -47,7 +47,7 @@ class CurrencyExchangeCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         try {
-            $exchange = new Exchange($amount, $from, $to);
+            $exchange = new Exchange($from, $to, $amount);
 
             $this->validate($exchange);
 

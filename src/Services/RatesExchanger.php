@@ -25,8 +25,8 @@ class RatesExchanger
     public function __invoke(Exchange $exchange): string
     {
         $pair = $this->doctrine->getRepository(Pair::class)->findOneBy([
-                'base' => $exchange->getFrom(),
-                'currency' => $exchange->getTo(),
+                'base' => $exchange->from,
+                'currency' => $exchange->to,
             ]
         );
 
@@ -34,6 +34,6 @@ class RatesExchanger
             throw new NonExistingtRateException();
         }
 
-        return (string)Decimal::fromString($pair->getRate())->mul(Decimal::fromString($exchange->getAmount()), 8);
+        return (string)Decimal::fromString($pair->getRate())->mul(Decimal::fromString($exchange->amount), 8);
     }
 }

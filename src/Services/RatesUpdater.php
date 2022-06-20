@@ -75,10 +75,10 @@ class RatesUpdater
     private function makeDirectRate(RateDto $rateDto, ValidatorInterface $validator): RateEntity
     {
         $rate = new RateEntity();
-        $rate->setBase($rateDto->getBase());
-        $rate->setDate($rateDto->getDate());
-        $rate->setRate($rateDto->getRate());
-        $rate->setCurrency($rateDto->getCurrency());
+        $rate->setBase($rateDto->base);
+        $rate->setDate($rateDto->date);
+        $rate->setRate($rateDto->rate);
+        $rate->setCurrency($rateDto->currency);
 
         $errors = $validator->validate($rate);
         if (count($errors) > 0) {
@@ -96,13 +96,13 @@ class RatesUpdater
      */
     private function makeReverseRate(RateDto $rateDto, ValidatorInterface $validator): RateEntity
     {
-        $rateValue = (string)Decimal::fromInteger(1)->div(Decimal::fromString($rateDto->getRate()), 8);
+        $rateValue = (string)Decimal::fromInteger(1)->div(Decimal::fromString($rateDto->rate), 8);
 
         $rate = new RateEntity();
-        $rate->setBase($rateDto->getCurrency());
-        $rate->setDate($rateDto->getDate());
+        $rate->setBase($rateDto->currency);
+        $rate->setDate($rateDto->date);
         $rate->setRate($rateValue);
-        $rate->setCurrency($rateDto->getBase());
+        $rate->setCurrency($rateDto->base);
 
         $errors = $validator->validate($rate);
         if (count($errors) > 0) {

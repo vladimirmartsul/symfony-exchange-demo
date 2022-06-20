@@ -25,10 +25,10 @@ final class EcbRatesProvider extends RatesProvider
 
         return array_map(
             static fn(array $rate): Rate => new Rate(
-                $date,
+                $rate['@attributes']['currency'],
                 $base,
                 (string)$rate['@attributes']['rate'],
-                $rate['@attributes']['currency']
+                $date
             ),
             $rates
         );

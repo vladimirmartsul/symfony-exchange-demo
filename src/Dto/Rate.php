@@ -11,37 +11,18 @@ use Litipk\BigNumbers\Decimal;
  */
 class Rate
 {
-    private readonly DateTimeImmutable $date;
-    private readonly string $rate;
+    public readonly DateTimeImmutable $date;
+    public readonly string $rate;
 
 
-    public function __construct(string $date, private readonly string $base, string $rate, private readonly string $currency)
+    public function __construct(
+        public readonly string $currency,
+        public readonly string $base,
+        string $rate,
+        string $date
+    )
     {
-        $this->date = new DateTimeImmutable($date);
         $this->rate = (string)Decimal::create($rate, 8);
-    }
-
-
-    public function getDate(): DateTimeImmutable
-    {
-        return $this->date;
-    }
-
-
-    public function getBase(): string
-    {
-        return $this->base;
-    }
-
-
-    public function getRate(): string
-    {
-        return $this->rate;
-    }
-
-
-    public function getCurrency(): string
-    {
-        return $this->currency;
+        $this->date = new DateTimeImmutable($date);
     }
 }

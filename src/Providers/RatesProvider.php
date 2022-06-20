@@ -82,10 +82,10 @@ abstract class RatesProvider implements RatesProviderInterface
     {
         return array_map(
             static fn(array $rate): Rate => new Rate(
-                $rate['date'],
+                $rate['currency'],
                 $rate['base'],
                 $rate['rate'],
-                $rate['currency']
+                $rate['date']
             ),
             $data
         );

@@ -11,32 +11,15 @@ use Litipk\BigNumbers\Decimal;
  */
 class Exchange
 {
-    private readonly string $amount;
-
-
-    public function __construct(string $amount, private readonly string $from, private readonly string $to)
-    {
-        $this->amount = (string)Decimal::create($amount, 8);
-    }
-
-
     #[Assert\AmountRequirements]
-    public function getAmount(): string
-    {
-        return $this->amount;
-    }
+    public readonly string $amount;
 
 
-    #[Assert\ExchangeCurrencyRequirements(options: ['field' => 'base'])]
-    public function getFrom(): string
-    {
-        return $this->from;
-    }
-
-
-    #[Assert\ExchangeCurrencyRequirements(options: ['field' => 'currency'])]
-    public function getTo(): string
-    {
-        return $this->to;
+    public function __construct(
+        #[Assert\ExchangeCurrencyRequirements(options: ['field' => 'base'])] public readonly string $from,
+        #[Assert\ExchangeCurrencyRequirements(options: ['field' => 'currency'])] public readonly string $to,
+        string $amount,
+    ) {
+        $this->amount = (string)Decimal::create($amount, 8);
     }
 }

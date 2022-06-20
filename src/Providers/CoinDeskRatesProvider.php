@@ -23,10 +23,10 @@ final class CoinDeskRatesProvider extends RatesProvider
 
         return [
             new Rate(
-                $date,
+                $currency,
                 $this->base,
                 $rate,
-                $currency
+                $date
             ),
         ];
     }
