@@ -9,6 +9,7 @@ use App\Dto\Rate as RateDto;
 use App\Parsers\JsonResponseParser;
 use App\Parsers\NullResponseParser;
 use App\Parsers\XmlResponseParser;
+use Exception;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -33,6 +34,7 @@ abstract class RatesProvider implements RatesProviderInterface
      * @throws RedirectionExceptionInterface
      * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
+     * @throws Exception
      */
     public function __invoke(): array
     {
@@ -77,6 +79,7 @@ abstract class RatesProvider implements RatesProviderInterface
     /**
      * Transform parsed content into rates array
      * @return RateDto[]
+     * @throws Exception
      */
     protected function transform(array $data): array
     {

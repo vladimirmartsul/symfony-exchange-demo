@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace App\Validator;
 
 use App\Repository\PairRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -15,14 +17,17 @@ use function is_string;
  */
 class PairCurrencyExistValidator extends ConstraintValidator
 {
-    /**
-     * @inheritDoc
-     */
     public function __construct(private readonly PairRepository $repository)
     {
     }
 
 
+    /**
+     * @throws UnexpectedValueException
+     * @throws UnexpectedTypeException
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
     public function validate(mixed $value, Constraint $constraint): void
     {
         if (!$constraint instanceof PairCurrencyExist) {

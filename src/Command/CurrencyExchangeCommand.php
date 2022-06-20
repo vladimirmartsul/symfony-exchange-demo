@@ -10,11 +10,13 @@ use OutOfBoundsException;
 use RuntimeException;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use TypeError;
 use function count;
 
 #[AsCommand(
@@ -29,6 +31,9 @@ class CurrencyExchangeCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     protected function configure(): void
     {
         $this
@@ -38,6 +43,10 @@ class CurrencyExchangeCommand extends Command
     }
 
 
+    /**
+     * @throws InvalidArgumentException
+     * @throws TypeError
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $amount = $input->getArgument('amount');
@@ -60,12 +69,15 @@ class CurrencyExchangeCommand extends Command
             return Command::FAILURE;
         }
 
-        $io->success("{$amount} {$from} is {$result} $to");
+        $io->success("$amount $from is $result $to");
 
         return Command::SUCCESS;
     }
 
 
+    /**
+     * @throws OutOfBoundsException
+     */
     private function validate(Exchange $exchange): void
     {
         $errors = $this->validator->validate($exchange);

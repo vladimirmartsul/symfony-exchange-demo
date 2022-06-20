@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Dto;
 
 use DateTimeImmutable;
+use Exception;
 use Litipk\BigNumbers\Decimal;
 
 /**
@@ -15,6 +16,9 @@ class Rate
     public readonly string $rate;
 
 
+    /**
+     * @throws Exception
+     */
     public function __construct(
         public readonly string $currency,
         public readonly string $base,

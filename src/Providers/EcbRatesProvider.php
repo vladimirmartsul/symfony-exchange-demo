@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Dto\Rate;
+use Exception;
 use function array_map;
 
 /**
@@ -13,6 +14,7 @@ final class EcbRatesProvider extends RatesProvider
 {
     /**
      * @inheritDoc
+     * @throws Exception
      */
     protected function transform(array $data): array
     {

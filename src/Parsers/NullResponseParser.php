@@ -12,6 +12,9 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
  */
 class NullResponseParser implements ResponseParser
 {
+    /**
+     * @throws UnparsableResponseException
+     */
     public function parse(ResponseInterface $response): array
     {
         throw new UnparsableResponseException();

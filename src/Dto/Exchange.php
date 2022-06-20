@@ -5,6 +5,7 @@ namespace App\Dto;
 
 use App\Validator\Constraints as Assert;
 use Litipk\BigNumbers\Decimal;
+use TypeError;
 
 /**
  * Exchange DTO for interacting with rates converter
@@ -15,6 +16,9 @@ class Exchange
     public readonly string $amount;
 
 
+    /**
+     * @throws TypeError
+     */
     public function __construct(
         #[Assert\ExchangeCurrencyRequirements(options: ['field' => 'base'])] public readonly string $from,
         #[Assert\ExchangeCurrencyRequirements(options: ['field' => 'currency'])] public readonly string $to,

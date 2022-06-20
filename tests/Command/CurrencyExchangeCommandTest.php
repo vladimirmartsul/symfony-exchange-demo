@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Tests\Command;
 
 use PHPUnit\Framework\ExpectationFailedException;
-use RuntimeException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Symfony\Component\Console\Exception\CommandNotFoundException;
 
@@ -15,7 +14,6 @@ class CurrencyExchangeCommandTest extends CommandTestCase
 
     /**
      * @throws CommandNotFoundException
-     * @throws RuntimeException
      */
     protected function setUp(): void
     {
@@ -29,7 +27,6 @@ class CurrencyExchangeCommandTest extends CommandTestCase
      * @throws ExpectationFailedException
      * @throws CommandNotFoundException
      * @throws InvalidArgumentException
-     * @throws RuntimeException
      * @dataProvider dataProvider
      */
     public function testCurrencyExchangeCommand(float $amount, string $from, string $to, float $expected): void
@@ -41,7 +38,7 @@ class CurrencyExchangeCommandTest extends CommandTestCase
         ];
 
         $expected = number_format($expected, 8);
-        $expected = "{$amount} {$from} is $expected $to";
+        $expected = "$amount $from is $expected $to";
 
         $output = self::execute(self::$commandName, $input);
 

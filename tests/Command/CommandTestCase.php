@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Command;
 
-use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Exception\CommandNotFoundException;
@@ -25,7 +24,6 @@ abstract class CommandTestCase extends KernelTestCase
     /**
      * @param string[] $input
      * @throws CommandNotFoundException
-     * @throws RuntimeException
      */
     protected static function execute(string $commandName, array $input = []): string
     {

@@ -32,7 +32,7 @@ class PairRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('p')
                 ->select('COUNT(1)')
-                ->andWhere("p.{$field} = :value")
+                ->andWhere("p.$field = :value")
                 ->setParameter('value', $value)
                 ->getQuery()
                 ->getSingleScalarResult()
