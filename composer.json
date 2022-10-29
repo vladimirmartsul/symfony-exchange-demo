@@ -2,7 +2,28 @@
     "name": "vladimirmartsul/symfony-exchange-demo",
     "description": "Symfony currency exchange demo",
     "type": "project",
+    "keywords": [
+        "REST",
+        "API",
+        "microservice",
+        "symfony",
+        "currency exchange",
+        "demo",
+        "tutorial",
+        "btc",
+        "sqlite"
+    ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Vladimir",
+            "homepage": "https://t.me/vladimir_mvs",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "docs": "https://dev.to/vladimir_mvs/demo-symfony-currency-converter-3ong"
+    },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
